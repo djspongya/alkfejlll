@@ -1,0 +1,41 @@
+<div class="page-header">
+    <h1>Új recept beküldése</h1>
+</div>
+
+<form class="form-horizontal" method="post">
+    <fieldset>
+        <div class="form-group
+            {{#if validationReceptek.nev}}
+                has-error
+            {{/if}}
+        ">
+            <label for="nev" class="col-lg-2 control-label">Recept név</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="nev" name="nev" placeholder="Rántotta" type="text" value="{{data.nev}}">
+                {{#if validationReceptek.nev}}
+                    <span class="help-block">{{validationReceptek.nev.msg}}</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="form-group
+            {{#if validationReceptek.elkeszites}}
+                has-error
+            {{/if}}
+        ">
+            <label for="elkeszites" class="col-lg-2 control-label">Elkészítés</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="elkeszites" name="elkeszites" placeholder="Hozzávalók, elkészítés...">{{data.elkeszites}}</textarea>
+                <!--<span class="help-block">Meg kell adni a helyszínt, ha pedig konkrét géppel van probléma, akkor azt is.</span>-->
+                {{#if validationReceptek.elkeszites}}
+                    <span class="help-block">{{validationReceptek.elkeszites.msg}}</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Töröl</button>
+                <button type="submit" class="btn btn-primary">Beküld</button>
+            </div>
+        </div>
+    </fieldset>
+</form>        
