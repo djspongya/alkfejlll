@@ -1,0 +1,45 @@
+{
+  "data": {
+    "user": []
+  },
+  "schema": {
+    "user": {
+      "felhasznalonev": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "surname": {
+        "type": "string"
+      },
+      "forename": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "tag",
+          "admin"
+        ],
+        "defaultsTo": "tag"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "user": {}
+  }
+}

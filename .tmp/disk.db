@@ -1,0 +1,46 @@
+{
+  "data": {
+    "recept": []
+  },
+  "schema": {
+    "recept": {
+      "date": {
+        "type": "datetime"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "uj",
+          "elfogadott"
+        ]
+      },
+      "nev": {
+        "type": "string"
+      },
+      "elkeszites": {
+        "type": "string"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "recept": {}
+  }
+}
