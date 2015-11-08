@@ -34,7 +34,7 @@ describe('User tries to access receptek', function (argument) {
     
     it('should be able to login with correct credentials', function (done) {
         browser
-            .fill('username', 'admin')
+            .fill('felhasznalonev', 'admin4')
             .fill('password', 'asdasd')
             .pressButton('button[type=submit]')
             .then(function () {
