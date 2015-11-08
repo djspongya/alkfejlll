@@ -5,43 +5,41 @@
 <form class="form-horizontal" method="post">
     <fieldset>
         <div class="form-group
-            {{#if validationReceptek.nev}}
+            {{#if validationErrors.nev}}
                 has-error
             {{/if}}
         ">
             <label for="nev" class="col-lg-2 control-label">Recept név</label>
             <div class="col-lg-10">
-                <input class="form-control" id="nev" name="nev" placeholder="Rántotta" type="text" value="{{nev}}">
-                {{#if validationReceptek.nev}}
-                    <span class="help-block">{{validationReceptek.nev.msg}}</span>
+                <input class="form-control" id="nev" name="nev" placeholder="Rántotta" type="text" value="{{data.nev}}">
+                {{#if validationErrors.nev}}
+                    <span class="help-block">{{validationErrors.nev.msg}}</span>
                 {{/if}}
             </div>
         </div>
         <div class="form-group
-            {{#if validationReceptek.elkeszites}}
+            {{#if validationErrors.elkeszites}}
                 has-error
             {{/if}}
         ">
             <label for="elkeszites" class="col-lg-2 control-label">Elkészítés</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="elkeszites" name="elkeszites" placeholder="Hozzávalók, elkészítés...">{{elkeszites}}</textarea>
+                <textarea class="form-control" rows="3" id="elkeszites" name="elkeszites" placeholder="Hozzávalók, elkészítés...">{{data.elkeszites}}</textarea>
                 <!--<span class="help-block">Meg kell adni a helyszínt, ha pedig konkrét géppel van probléma, akkor azt is.</span>-->
-                {{#if validationReceptek.elkeszites}}
-                    <span class="help-block">{{validationReceptek.elkeszites.msg}}</span>
+                {{#if validationErrors.elkeszites}}
+                    <span class="help-block">{{validationErrors.elkeszites.msg}}</span>
                 {{/if}}
             </div>
-            
             <label for="statusz" class="col-lg-2 control-label">Státusz</label>
             <div class="col-lg-10 row-fluid" style="padding-top:15px;">
-                <input type="radio" name="status" value="elfogadott" checked>Elfogadott
-                <input type="radio" name="status" value="uj">Új
+                <input type="radio" name="status" value="elfogadott" checked> Elfogadott
+                <input type="radio" name="status" value="uj"> Új
             </div>
-            
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Töröl</button>
-                <button type="submit" class="btn btn-primary">Beküld</button>
+                <button type="submit" class="btn btn-primary">Szerkeszt</button>
             </div>
         </div>
     </fieldset>

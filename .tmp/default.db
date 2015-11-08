@@ -1,6 +1,40 @@
 {
   "data": {
-    "user": []
+    "user": [
+      {
+        "surname": "qweqewewq",
+        "forename": "qweqewewq",
+        "felhasznalonev": "admin3",
+        "password": "$2a$10$xZiFpzM8oDQ4mf1bF3QWSOs4jrXntzPd1EuI5aWwregj/9ZHzdQUi",
+        "avatar": "",
+        "role": "tag",
+        "createdAt": "2015-11-05T19:52:29.949Z",
+        "updatedAt": "2015-11-05T19:52:29.949Z",
+        "id": 1
+      },
+      {
+        "surname": "adam",
+        "forename": "adam",
+        "felhasznalonev": "adam",
+        "password": "$2a$10$RbdIFdKLS7gBLMT5UuEw3.J0Vz2ExTJyI.xoAPdnQOwxnJ9pbd4ti",
+        "avatar": "",
+        "role": "tag",
+        "createdAt": "2015-11-05T19:52:33.392Z",
+        "updatedAt": "2015-11-05T19:52:33.392Z",
+        "id": 2
+      },
+      {
+        "surname": "Vnév",
+        "forename": "Knév",
+        "felhasznalonev": "admin4",
+        "password": "$2a$10$5MUq/Tl6b.ecO6HAgThUAOMmM8YxH8go08z2WqNh4v3ft76qGxiaG",
+        "avatar": "",
+        "role": "tag",
+        "createdAt": "2015-11-08T09:52:46.976Z",
+        "updatedAt": "2015-11-08T09:52:46.976Z",
+        "id": 3
+      }
+    ]
   },
   "schema": {
     "user": {
@@ -40,6 +74,8 @@
     }
   },
   "counters": {
-    "user": {}
+    "user": {
+      "id": 3
+    }
   }
 }

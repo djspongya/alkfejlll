@@ -8,20 +8,22 @@ router.get('/', function (req, res) {
         errorMessages: req.flash('error')
     });
 });
+
 router.post('/', passport.authenticate('local', {
     successRedirect: '/receptek/list',
     failureRedirect: '/login',
     failureFlash: true,
     badRequestMessage: 'Hiányzó adatok'
 }));
-router.get('/signup', function (req, res) {
-    res.render('login/signup', {
+
+router.get('/regisztracio', function (req, res) {
+    res.render('login/regisztracio', {
         errorMessages: req.flash('error')
     });
 });
-router.post('/signup', passport.authenticate('local-signup', {
+router.post('/regisztracio', passport.authenticate('local-signup', {
     successRedirect:    '/receptek/list',
-    failureRedirect:    '/login/signup',
+    failureRedirect:    '/login/regisztracio',
     failureFlash:       true,
     badRequestMessage:  'Hiányzó adatok'
 }));

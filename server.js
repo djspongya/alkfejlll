@@ -122,7 +122,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(session({
-    cookie: { maxAge: 6000000 },
+    cookie: { maxAge: 600000 },
     secret: 'titkos szoveg',
     resave: false,
     saveUninitialized: false,
@@ -134,31 +134,14 @@ app.use(passport.session());
 
 app.use(setLocalsForLayout());
 
-//endpoint
+// ----- ENDPOINT -----
 app.use('/', indexRouter);
-//app.use('/errors', errorRouter);
-app.use('/receptek', ensureAuthenticated, receptRouter);
+app.use('/receptek', ensureAuthenticated, receptRouter); // belepes kell
 app.use('/login', loginRouter);
-
-/*app.get('/operator', ensureAuthenticated, andRestrictTo('operator'), function(req, res) {
-    res.end('operator');
-});*/
 
 app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
-})
-
-app.get('/delete/:id', function (req, res) {
-    req.app.models.recept.destroy({ id: req.params.id })
-    .then(function () {
-        req.flash('success', 'Recept törölve');
-        res.redirect('/receptek/list'); 
-    })
-    .catch(function () {
-        req.flash('error', 'Üzenet törlése sikertelen');
-        res.redirect('/receptek/list');
-    })
 })
 
 // ORM példány

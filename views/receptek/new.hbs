@@ -5,20 +5,20 @@
 <form class="form-horizontal" method="post">
     <fieldset>
         <div class="form-group
-            {{#if validationReceptek.nev}}
+            {{#if validationErrors.nev}}
                 has-error
             {{/if}}
         ">
             <label for="nev" class="col-lg-2 control-label">Recept név</label>
             <div class="col-lg-10">
                 <input class="form-control" id="nev" name="nev" placeholder="Rántotta" type="text" value="{{data.nev}}">
-                {{#if validationReceptek.nev}}
-                    <span class="help-block">{{validationReceptek.nev.msg}}</span>
+                {{#if validationErrors.nev}}
+                    <span class="help-block">{{validationErrors.nev.msg}}</span>
                 {{/if}}
             </div>
         </div>
         <div class="form-group
-            {{#if validationReceptek.elkeszites}}
+            {{#if validationErrors.elkeszites}}
                 has-error
             {{/if}}
         ">
@@ -26,8 +26,8 @@
             <div class="col-lg-10">
                 <textarea class="form-control" rows="3" id="elkeszites" name="elkeszites" placeholder="Hozzávalók, elkészítés...">{{data.elkeszites}}</textarea>
                 <!--<span class="help-block">Meg kell adni a helyszínt, ha pedig konkrét géppel van probléma, akkor azt is.</span>-->
-                {{#if validationReceptek.elkeszites}}
-                    <span class="help-block">{{validationReceptek.elkeszites.msg}}</span>
+                {{#if validationErrors.elkeszites}}
+                    <span class="help-block">{{validationErrors.elkeszites.msg}}</span>
                 {{/if}}
             </div>
         </div>

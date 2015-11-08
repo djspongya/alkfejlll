@@ -30,36 +30,45 @@ router.get('/szerkeszt/:id', function (req, res) {
     })
 });
 
+router.get('/new', function (req, res) {
+    var validationErrors = (req.flash('validationErrors') || [{}]).pop();
+    var data = (req.flash('data') || [{}]).pop();
+    
+    res.render('receptek/new', {
+        validationErrors: validationErrors,
+        data: data,
+    });
+});
+
 // Recept szerkesztese
-router.get('/edit/:id', function(req, res) {
-    //console.log(req.user.id);
+router.get('/edit/:id', function (req, res) {
     var fId = req.param('id');
-    req.app.models.recept.find({
-        id: fId
-    }).then(function(found) {
+    var validationErrors = (req.flash('validationErrors') || [{}]).pop();
+    var data = (req.flash('data') || [{}]).pop();
+    
+    req.app.models.recept.findOne({id: fId}).then(function (recept) {
         res.render('receptek/edit', {
-            nev: found[0].nev,
-            elkeszites: found[0].elkeszites
+            data: recept
         });
     });
 });
+
 router.post('/edit/:id', function (req, res) {
+    var fId = req.param('id');
     // adatok ellenőrzése
-    req.checkBody('nev', 'Hibás recept név').notEmpty().withMessage('Kötelező megadni!');
-    req.sanitizeBody('elkeszites').escape();
-    req.checkBody('elkeszites', 'Hibás elkészítés').notEmpty().withMessage('Kötelező megadni!');
+    req.checkBody('nev', 'Invalid description!').notEmpty().withMessage('Kötelező megadni!');
+    //req.sanitizeBody('elkeszites').escape();
+    req.checkBody('elkeszites', 'Invalid description!').notEmpty().withMessage('Kötelező megadni!');
     
     var validationErrors = req.validationErrors(true);
     console.log(validationErrors);
     console.log(req.body);
     
-    var fId = req.param('id');
-    
     if (validationErrors) {
         // űrlap megjelenítése a hibákkal és a felküldött adatokkal
         req.flash('validationErrors', validationErrors);
-        req.flash('info', 'Recept szerkesztése nem sikerult!');
-        res.redirect('/receptek/list');
+        req.flash('data', req.body);
+        res.redirect('/receptek/edit/' + fId);
     }
     else {
         // adatok elmentése (ld. később) és a hibalista megjelenítése
@@ -70,7 +79,7 @@ router.post('/edit/:id', function (req, res) {
         })
         .then(function (recept) {
             //siker
-            req.flash('info', 'Recept szerkesztése sikeres!');
+            req.flash('info', 'Recept sikeresen szerkesztve!');
             res.redirect('/receptek/list');
         })
         .catch(function (err) {
@@ -80,32 +89,11 @@ router.post('/edit/:id', function (req, res) {
     }
 });
 
-
-router.get('/list', function (req, res) {
-    req.app.models.recept.find().then(function (receptek) {
-        console.log(receptek);
-        
-        //megjelenítés
-        res.render('receptek/list', {
-            receptek: decorateReceptek(receptek),
-            messages: req.flash('info')
-        });
-    });
-});
-router.get('/new', function (req, res) {
-    var validationErrors = (req.flash('validationErrors') || [{}]).pop();
-    var data = (req.flash('data') || [{}]).pop();
-    
-    res.render('receptek/new', {
-        validationErrors: validationErrors,
-        data: data,
-    });
-});
 router.post('/new', function (req, res) {
     // adatok ellenőrzése
-    req.checkBody('nev', 'Hibás recept név').notEmpty().withMessage('Kötelező megadni!');
-    req.sanitizeBody('elkeszites').escape();
-    req.checkBody('elkeszites', 'Hibás elkészítés').notEmpty().withMessage('Kötelező megadni!');
+    req.checkBody('nev', 'Invalid description!').notEmpty().withMessage('Kötelező megadni!');
+    //req.sanitizeBody('elkeszites').escape();
+    req.checkBody('elkeszites', 'Invalid description!').notEmpty().withMessage('Kötelező megadni!');
     
     var validationErrors = req.validationErrors(true);
     console.log(validationErrors);
@@ -136,5 +124,26 @@ router.post('/new', function (req, res) {
         });
     }
 });
+
+router.get('/list', function (req, res) {
+    req.app.models.recept.find().then(function (receptek) {
+        console.log(receptek);
+        
+        //megjelenítés
+        res.render('receptek/list', {
+            receptek: decorateReceptek(receptek),
+            messages: req.flash('info')
+        });
+    });
+});
+
+router.get('/delete/:id', function (req, res) {
+    var fId = req.param('id');
+    req.app.models.recept.destroy({ id: fId })
+    .then(function (recept) {
+        req.flash('info', 'Recept sikeresen törölve!');
+        res.redirect('/receptek/list');
+    })
+})
 
 module.exports = router;

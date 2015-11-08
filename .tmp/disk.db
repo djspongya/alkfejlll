@@ -1,6 +1,27 @@
 {
   "data": {
-    "recept": []
+    "recept": [
+      {
+        "status": "uj",
+        "nev": "asdsad",
+        "elkeszites": "sadsadsad",
+        "user": 3,
+        "date": "2015-11-08T10:48:38.078Z",
+        "createdAt": "2015-11-08T10:48:38.080Z",
+        "updatedAt": "2015-11-08T10:48:38.080Z",
+        "id": 5
+      },
+      {
+        "status": "uj",
+        "nev": "j",
+        "elkeszites": "j",
+        "user": 3,
+        "date": "2015-11-08T10:58:00.962Z",
+        "createdAt": "2015-11-08T10:58:00.965Z",
+        "updatedAt": "2015-11-08T10:58:00.965Z",
+        "id": 6
+      }
+    ]
   },
   "schema": {
     "recept": {
@@ -41,6 +62,8 @@
     }
   },
   "counters": {
-    "recept": {}
+    "recept": {
+      "id": 6
+    }
   }
 }
