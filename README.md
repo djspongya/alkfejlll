@@ -1,6 +1,9 @@
 # Alkalmazások fejlesztése
 1. beadandó (Receptek) - Bacsa Roland - AE8YTH
 
+### Heroku
+[alkfejlll.herokuapp.com](https://alkfejlll.herokuapp.com/)
+
 ## Követelmény feltárás
 - legalább két modellt, egy-sok kapcsolatban
 - legalább 1 űrlapot
